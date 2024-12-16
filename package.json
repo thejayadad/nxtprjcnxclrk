@@ -18,9 +18,12 @@
     "@clerk/clerk-react": "^5.20.2",
     "@clerk/nextjs": "^6.9.2",
     "convex": "^1.17.3",
+    "lucide-react": "^0.468.0",
     "next": "15.1.0",
+    "query-string": "^9.1.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -6,27 +6,28 @@ export default defineSchema({
     email: v.string(),
     name: v.string(),
     avatar: v.string(),
-    createdAt: v.string(), // Store dates as ISO strings
+    createdAt: v.string(),
   }).index("by_email", ["email"]),
 
   events: defineTable({
     title: v.string(),
     description: v.string(),
-    instructorId: v.string(), // References a user
-    date: v.string(), // ISO string
-    startTime: v.string(), // e.g., "15:00"
-    endTime: v.string(), // e.g., "16:00"
-    capacity: v.number(), // Max number of attendees
+    category: v.string(),
+    instructorId: v.string(),
+    date: v.string(),
+    startTime: v.string(),
+    endTime: v.string(),
+    capacity: v.number(),
     createdAt: v.string(),
+    imageUrl: v.optional(v.id("_storage")),
   })
     .index("by_instructor_id", ["instructorId"])
     .index("by_date", ["date"]),
 
   bookings: defineTable({
-    userId: v.string(), // References a user
-    classId: v.string(), // References a class
-    status: v.string(), // e.g., "confirmed", "canceled"
-    
+    userId: v.string(),
+    classId: v.id("events"), // Corrected to reference `events` table
+    status: v.string(),
     createdAt: v.string(),
   })
     .index("by_user_id", ["userId"])
@@ -35,7 +36,7 @@ export default defineSchema({
   notifications: defineTable({
     userId: v.string(),
     message: v.string(),
-    type: v.string(), // e.g., "reminder", "class_full"
+    type: v.string(),
     isRead: v.boolean(),
     createdAt: v.string(),
   }).index("by_user_id", ["userId"]),
